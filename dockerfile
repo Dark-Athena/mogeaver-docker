@@ -51,7 +51,7 @@ RUN set -eux; \
     echo "/opt/mogeaver/mogeaver"  >> /opt/start.sh && \
     chmod 777 /opt/start.sh 
 
-## chinese font support
+## Chinese font support
 # RUN yum install cjkuni-ukai-fonts cjkuni-uming-fonts -y &&\
 #     rm -rf /etc/fonts/local.conf && \
 #     echo "<?xml version='1.0'?>"  >> /etc/fonts/local.conf && \

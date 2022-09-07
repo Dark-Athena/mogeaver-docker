@@ -16,3 +16,8 @@ docker build -t mogeaver-docker:latest .
 
 6. 默认用户配置路径在 d:\MogeaverData ，可以通过修改run_mogeaver.bat文件变更
 7. 默认gs_dump导出文件路径在 d:\dump_data ，可以通过修改run_mogeaver.bat文件变更
+8. 如果需要中文字体支持，请取消dockerfile中关于“Chinese font support”部分的注释
+9. 如果需要更换国内yum源，请取消dockerfile中关于“change yum repo”部分的注释
+
+## 特点
+1. 已集成openGauss客户端命令行工具，比如gsql/gs_dump等，可以通过mogeaver调用
