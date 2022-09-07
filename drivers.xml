@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<drivers>
+	<provider id="mogdb">
+		<driver id="mogdb-jdbc" categories="sql" name="MogDB" class="org.opengauss.Driver" url="jdbc:opengauss://{host}[:{port}]/[{database}]" port="5432" defaultDatabase="postgres" defaultUser="postgres" description="MogDB JDBC driver" custom="false">
+			<library type="license" path="drivers/opengauss/LICENSE.txt" custom="false"/>
+			<library type="jar" path="drivers/opengauss" custom="false"/>
+			<clientHome id="/opt/bin" path="/opt/bin"/>
+		</driver>
+	</provider>
+</drivers>
