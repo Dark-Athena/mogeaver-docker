@@ -36,21 +36,6 @@ COPY --from=builder /opt  /opt
 #    curl -O /etc/yum.repos.d/fedora-updates.repo http://mirrors.aliyun.com/repo/fedora-updates.repo && \
 #    dnf makecache
 
-RUN set -eux; \
-    yum install java-latest-openjdk.x86_64 -y &&\
-    rm -rf /tmp/* && \
-    yum clean all && \
-    dnf clean all && \
-    rm -rf /var/cache/dnf/* && \
-    ln -s /usr/lib64/libreadline.so.8 /usr/lib64/libreadline.so.6 && \
-    ln -s /usr/lib64/libcrypt.so.2 /usr/lib64/libcrypt.so.1 && \
-    echo "export DISPLAY=host.docker.internal:0"  >> /opt/start.sh && \
-    echo "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/lib:/usr/lib64:/usr/lib:/opt/lib"  >> /opt/start.sh && \
-    echo "mkdir -p /root/.local/share/MogeaverData/workspace6/.metadata/.plugins/org.jkiss.dbeaver.core"  >> /opt/start.sh && \
-    echo "cp -n /opt/drivers.xml /root/.local/share/MogeaverData/workspace6/.metadata/.plugins/org.jkiss.dbeaver.core/drivers.xml"  >> /opt/start.sh && \
-    echo "/opt/mogeaver/mogeaver"  >> /opt/start.sh && \
-    chmod 777 /opt/start.sh 
-
 ## Chinese font support
 # RUN yum install cjkuni-ukai-fonts cjkuni-uming-fonts -y &&\
 #     rm -rf /etc/fonts/local.conf && \
@@ -80,4 +65,19 @@ RUN set -eux; \
 #     echo " </alias>"  >> /etc/fonts/local.conf && \
 #     echo "</fontconfig>"  >> /etc/fonts/local.conf 
     
+RUN set -eux; \
+    yum install java-latest-openjdk.x86_64 -y &&\
+    rm -rf /tmp/* && \
+    yum clean all && \
+    dnf clean all && \
+    rm -rf /var/cache/dnf/* && \
+    ln -s /usr/lib64/libreadline.so.8 /usr/lib64/libreadline.so.6 && \
+    ln -s /usr/lib64/libcrypt.so.2 /usr/lib64/libcrypt.so.1 && \
+    echo "export DISPLAY=host.docker.internal:0"  >> /opt/start.sh && \
+    echo "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/lib:/usr/lib64:/usr/lib:/opt/lib"  >> /opt/start.sh && \
+    echo "mkdir -p /root/.local/share/MogeaverData/workspace6/.metadata/.plugins/org.jkiss.dbeaver.core"  >> /opt/start.sh && \
+    echo "cp -n /opt/drivers.xml /root/.local/share/MogeaverData/workspace6/.metadata/.plugins/org.jkiss.dbeaver.core/drivers.xml"  >> /opt/start.sh && \
+    echo "/opt/mogeaver/mogeaver"  >> /opt/start.sh && \
+    chmod 777 /opt/start.sh 
+
 CMD exec /opt/start.sh
